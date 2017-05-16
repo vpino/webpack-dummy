@@ -1,15 +1,17 @@
+const path = require('path');
+
 module.exports = {
   
   context: __dirname,
 
   entry: {
-    app: [__dirname + '/src/index.js']
+    app: [path.resolve(__dirname, 'src', 'index.js')]
   },
 
   output: {
-    path: __dirname + '/build',
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
-    publicPath: __dirname + '/build/'
+    publicPath: path.resolve(__dirname, 'build')
   },
  
   resolve: {
@@ -29,8 +31,8 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        include: __dirname,
-        exclude: __dirname + '/node_modules/',
+        include: path.resolve(__dirname),
+        exclude: path.resolve(__dirname, 'node_modules'),
         loader: 'babel-loader',
         
         query: {
